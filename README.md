@@ -1,2 +1,3 @@
-# BACK-MASCOTAP
-Sistema de mascotas, Back-End en express.
+# Trabajo-Integrador-Expo
+
+# types/express types/node nodemon ts-node typescript express zod
