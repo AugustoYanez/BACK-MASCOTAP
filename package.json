@@ -14,11 +14,11 @@
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.21",
-    "@types/node": "^20.14.9",
+    "@types/node": "^20.16.1",
     "jest": "^29.7.0",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.4"
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
