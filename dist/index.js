@@ -10,9 +10,11 @@ const database_1 = require("./database");
 const path_1 = __importDefault(require("path"));
 const cors = require('cors');
 const multer_1 = require("./middleware/multer");
-dotenv_1.default.config();
+// Configurar dotenv para cargar el archivo de entorno correcto
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
+dotenv_1.default.config({ path: envFile });
 const app = (0, express_1.default)();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express_1.default.json());
