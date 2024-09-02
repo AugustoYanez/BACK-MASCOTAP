@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import { Estado, Documento, Contacto, Rol } from "../interfaces/enums";
+import { Estado, Documento, Contacto, Rol, tipoDato } from "../interfaces/enums";
 import { IUsuario } from "../interfaces/Usuario";
-import { IMascota } from "../interfaces/Mascota";
+import { ICaracteristicas, IMascota } from "../interfaces/Mascota";
 
 
 const usuarioSchema = new mongoose.Schema<IUsuario>({
@@ -61,6 +61,19 @@ const usuarioSchema = new mongoose.Schema<IUsuario>({
 
 export const Usuario = mongoose.model('Usuario', usuarioSchema)
 
+const caracteristicasSchema = new mongoose.Schema<ICaracteristicas>({
+  nombre: {
+    type: String,
+    required: true
+  },
+  tipoDato: {
+    type: String,
+    enum: Object.values(tipoDato),
+    required: true
+  }
+})
+export const Caracteristica = mongoose.model('Caracteristica', caracteristicasSchema)
+
 
 const mascotaSchema = new mongoose.Schema<IMascota>({
 
@@ -96,10 +109,9 @@ const mascotaSchema = new mongoose.Schema<IMascota>({
     required: true
   },
   caracteristicas: {
-    type: String,
-    required: true,
-    trim: true
-  },
+    type: mongoose.Schema.Types.Mixed, // Permite cualquier tipo de valor
+    required: true
+  }
 
 })
 

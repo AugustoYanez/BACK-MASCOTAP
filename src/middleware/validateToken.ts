@@ -1,15 +1,7 @@
 import jwt, {JwtPayload} from 'jsonwebtoken';
 import { Request as IReq, Response as IRes, NextFunction as INext } from 'express';
+import { CustomRequest, Payload } from '../interfaces/jwt';
 
-export interface Payload {
-    _id: string;
-    nombre: string;
-    email: string;
-  // Otras propiedades que puedan estar en el payload
-}
-export interface CustomRequest extends IReq {
-    payload: Payload;
-   }
 
 export const authenticateToken = (req: IReq, res:IRes, next: INext) => {
     const authHeader = req.headers['authorization'];

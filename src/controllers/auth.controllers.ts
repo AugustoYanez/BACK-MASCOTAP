@@ -18,6 +18,7 @@ export const login = async (req: IReq, res: IRes) => {
       _id: found._id,
       nombre: found.nombre,
       email: found.email,
+      rol: found.rol
     });
 
     res.json({ message: "Sesion iniciada correctamente.", token });
@@ -55,8 +56,13 @@ export const register = async (req: IReq, res: IRes) => {
         email,
         contrasena: hash,
       }).save();
-    
-      const token = await createAccesToken({ _id: log._id, email: log.email });
+      
+      const token = await createAccesToken({
+        _id: log._id,
+        nombre: log.nombre,
+        email: log.email,
+        rol: log.rol
+      });
     
       res.status(201).json({ message: "Registro correcto. ", token });
   } catch (error) {

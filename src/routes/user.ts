@@ -7,11 +7,13 @@ import { idSchema } from '../schema/params.schema'
 
 const user = Router()
 
-user.get('/perfil', authenticateToken, perfil)
-user.get('/mascotas', authenticateToken, traerMascotas)
-user.get('/mascotas/:id', authenticateToken, validate(idSchema), traerMascota)
-user.post('/mascotas', authenticateToken, validate(registerMascota), agregarMascota)
-user.put('/mascotas', authenticateToken, validate(registerMascota), editarMascota)
-user.delete('/mascotas/:id', authenticateToken, validate(idSchema), eliminarMascota)
+user.use(authenticateToken);
+
+user.get('/perfil', perfil)
+user.get('/mascotas', traerMascotas)
+user.get('/mascotas/:id', validate(idSchema), traerMascota)
+user.post('/mascotas', validate(registerMascota), agregarMascota)
+user.put('/mascotas', validate(registerMascota), editarMascota)
+user.delete('/mascotas/:id', validate(idSchema), eliminarMascota)
 
 export default user;

@@ -1,5 +1,5 @@
 import { Request as IReq, Response as IRes } from 'express';
-import { CustomRequest, Payload } from '../middleware/validateToken';
+import { Payload, CustomRequest } from '../interfaces/jwt';
 import { Usuario } from '../models/auth.models';
 import { IMascota } from '../interfaces/Mascota';
 import { Mascota } from '../models/auth.models';
@@ -88,8 +88,8 @@ export const agregarMascota = async (req: IReq, res: IRes) => {
             caracteristicas  
         });  
 
-        // Guardar la nueva mascota en la base de datos  
-        const mascotaGuardada = await nuevaMascota.save();  
+        // Guardar la nueva mascota en la base de datos
+        const mascotaGuardada = await nuevaMascota.save();
 
         // Agregar la mascota guardada al usuario  
         usuario.mascotas.push(new mongoose.Types.ObjectId(mascotaGuardada._id));  

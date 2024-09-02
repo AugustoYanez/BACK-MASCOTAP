@@ -11,11 +11,19 @@ export enum Contacto {
 }
 
 export enum Rol {
-    Administrador = "ADMINISTRADOR"
+    Administrador = "ADMINISTRADOR",
+    Usuario = "USUARIO"
 }
  
 export enum Estado{ // para las mascotas
     EnCasa = "EN MI HOGAR",
     Adoptada = "LO ENCONTRE",
     Perdida = "LO PERDI",
+}
+
+export enum tipoDato {
+    string = "String",
+    int = "Int",
+    boolean = "Boolean",
+    double = "Double"
 }
