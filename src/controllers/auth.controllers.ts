@@ -3,6 +3,7 @@ import { IUsuario } from "../interfaces/Usuario";
 import { Usuario } from "../models/auth.models";
 import { Request as IReq, Response as IRes } from "express";
 import { createAccesToken } from "../libs/jwt";
+import { Rol } from "../interfaces/enums";
 
 export const login = async (req: IReq, res: IRes) => {
   try {
@@ -55,6 +56,7 @@ export const register = async (req: IReq, res: IRes) => {
         telefono,
         email,
         contrasena: hash,
+        rol: Rol.Usuario
       }).save();
       
       const token = await createAccesToken({
