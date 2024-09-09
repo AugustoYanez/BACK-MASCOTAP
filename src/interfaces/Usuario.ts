@@ -11,4 +11,6 @@ export interface IUsuario {
     contacto: Contacto;
     rol: Rol; 
     mascotas: mongoose.Types.ObjectId[];
+    intentosFallidos?: number,
+    bloqueadoHasta?: number
 }
