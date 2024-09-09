@@ -10,7 +10,7 @@ export const authenticateToken = (req: IReq, res:IRes, next: INext) => {
     if (token == null) return res.sendStatus(401);
 
     jwt.verify(token, process.env.TOKEN_SECRET || "secet", (err, user) => {
-        if (err) return res.sendStatus(403).json(err);
+        if (err) {res.status(403).json(err); return;}
         if (user) {
             (req as CustomRequest).payload = user as Payload;
             next();
