@@ -7,4 +7,5 @@ const router = Router();
 router.use('/api',auth);
 router.use('/user', user);
 router.use('/image', image)
+
 export default router;
