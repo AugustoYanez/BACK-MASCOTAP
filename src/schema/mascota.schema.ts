@@ -26,6 +26,9 @@ export const registerMascota = z.object({
         }),
         caracteristicas: z.string({
             required_error: "el campo caracteristicas, es requerido"
+        }),
+        ubicacion: z.string({
+            required_error: "El campo ubicacion es requerido"  // Nueva propiedad
         })
     })
 })

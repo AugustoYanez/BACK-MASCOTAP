@@ -9,5 +9,6 @@ export interface IMascota {
     edad: number;
     descripcion: string;
     imagen: string;
-    caracteristicas: string
+    caracteristicas: string;
+    ubicacion: string;
 }

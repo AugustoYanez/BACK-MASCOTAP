@@ -70,7 +70,7 @@ export const traerMascota = async (req: IReq, res: IRes) => {
 
 export const agregarMascota = async (req: IReq, res: IRes) => {
     try {
-        const { placaID, nombre, apodo, estado, edad, descripcion, imagen, caracteristicas }: IMascota = req.body;
+        const { placaID, nombre, apodo, estado, ubicacion, edad, descripcion, imagen, caracteristicas }: IMascota = req.body;
         const { _id } = (req as CustomRequest).payload as Payload;
         
         const usuario = await Usuario.findById(_id).populate('mascotas');
@@ -88,7 +88,7 @@ export const agregarMascota = async (req: IReq, res: IRes) => {
             return;
         }
 
-        const nuevaMascota = new Mascota({ placaID, nombre, apodo, estado, edad, descripcion, imagen, caracteristicas });
+        const nuevaMascota = new Mascota({ placaID, nombre, apodo, estado, ubicacion, edad, descripcion, imagen, caracteristicas });
         const mascotaGuardada = await nuevaMascota.save();
 
         usuario.mascotas.push(new mongoose.Types.ObjectId(mascotaGuardada._id));
@@ -103,7 +103,7 @@ export const agregarMascota = async (req: IReq, res: IRes) => {
 
 export const editarMascota = async (req: IReq, res: IRes) => {
     try {
-        const {_id, placaID, nombre, apodo, estado, edad, descripcion,imagen, caracteristicas }: IMascota = req.body;
+        const {_id, placaID, nombre, apodo, estado, edad, descripcion,imagen, caracteristicas, ubicacion}: IMascota = req.body;
         const user = (req as CustomRequest).payload as Payload;  
         const usuario = await Usuario.findById({ _id: user._id }).populate('mascotas');
 
@@ -115,7 +115,8 @@ export const editarMascota = async (req: IReq, res: IRes) => {
             edad,
             descripcion,
             imagen,
-            caracteristicas
+            caracteristicas,
+            ubicacion
         });
 
         if (!usuario) {  

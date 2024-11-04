@@ -101,6 +101,11 @@ const mascotaSchema = new mongoose.Schema<IMascota>({
     required: true,
     trim: true
   },
+  ubicacion: {  
+    type: String,
+    required: true,
+    trim: true
+}
 
 })
 
