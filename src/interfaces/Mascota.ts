@@ -11,8 +11,3 @@ export interface IMascota {
     imagen: string;
     caracteristicas: any;
 }
-
-export interface ICaracteristicas {
-    nombre: string;
-    tipoDato: tipoDato;
-}

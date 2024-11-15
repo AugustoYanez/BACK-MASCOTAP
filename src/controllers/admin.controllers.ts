@@ -1,7 +1,7 @@
 
 import { Request as IReq, Response as IRes } from "express";
-import { Caracteristica } from "../models/auth.models";
-import { ICaracteristicas } from "../interfaces/Mascota";
+import { Caracteristica } from "../models/caracteristica.models";
+import { ICaracteristicas } from "../interfaces/Caracteristica";
 
 export const traerCaracteristicas = async (req: IReq, res: IRes) => {
     try {
@@ -21,6 +21,6 @@ export const agregarCaracteristica = async (req: IReq, res: IRes) => {
         res.status(201).json(saved);
     } catch (error) {
         console.error(error);  
-        res.status(500).json({ error: 'Error al agregar la caracteristicas' });  
+        res.status(500).json({ error: [error] });  
     }
 }

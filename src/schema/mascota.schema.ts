@@ -27,13 +27,3 @@ export const registerMascota = z.object({
         caracteristicas: z.object({})
     })
 })
-export const caracteristicasMascota = z.object({
-    body: z.object({
-        nombre: z.string({
-            required_error:"el campo nombre"
-        }),
-        tipoDato: z.nativeEnum(tipoDato,{
-            required_error: "el campo tipo de dato es requerido"
-        })
-    })
-})
