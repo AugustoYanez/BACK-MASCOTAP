@@ -4,6 +4,7 @@ import { Usuario } from '../models/auth.models';
 import { IMascota } from '../interfaces/Mascota';
 import { Mascota } from '../models/mascota.models';
 import mongoose from 'mongoose';
+import { Estado } from '../interfaces/enums';
 
 export const traerMascotas = async (req: IReq, res: IRes) => {
     try {
@@ -143,5 +144,17 @@ export const eliminarMascota = async (req: IReq, res: IRes) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error al eliminar la mascota' });
+    }
+    
+};
+
+export const traerMascotasPerdidas = async (req: IReq, res: IRes) => {
+    try {
+        console.log('Buscando mascotas con estado:', Estado.Perdida);
+        const mascotasPerdidas = await Mascota.find({ estado: Estado.Perdida }).exec();
+        res.status(200).json(mascotasPerdidas);
+    } catch (error) {
+        console.error('Error al obtener las mascotas perdidas:', error);
+        res.status(500).json({ error: 'Error al obtener las mascotas perdidas' });
     }
 };
