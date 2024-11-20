@@ -24,6 +24,8 @@ export const registerMascota = z.object({
         imagen: z.string({
             required_error: "el campo imagen, es requerido"
         }),
-        caracteristicas: z.object({})
+        caracteristicas: z.string({
+            required_error: "el campo caracteristica, es requerido"
+        })
     })
 })
