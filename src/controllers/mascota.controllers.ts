@@ -4,7 +4,7 @@ import { Usuario } from '../models/auth.models';
 import { IMascota } from '../interfaces/Mascota';
 import { Mascota } from '../models/mascota.models';
 import mongoose from 'mongoose';
-import { Estado } from '../interfaces/enums';
+import { Estado, Solicitud } from '../interfaces/enums';
 
 export const traerMascotas = async (req: IReq, res: IRes) => {
     try {
@@ -67,7 +67,8 @@ export const agregarMascota = async (req: IReq, res: IRes) => {
             edad,  
             descripcion,  
             imagen,  
-            caracteristicas  
+            caracteristicas,
+            solicitud: Solicitud.espera
         });  
 
         // Guardar la nueva mascota en la base de datos

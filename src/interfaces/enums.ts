@@ -27,3 +27,9 @@ export enum tipoDato {
     boolean = "Boolean",
     double = "Double"
 }
+
+export enum Solicitud {
+    aceptado = "ACEPTADO",
+    espera = "ESPERA",
+    rechazado = "RECHAZADO"
+}

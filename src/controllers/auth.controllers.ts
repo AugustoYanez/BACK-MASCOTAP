@@ -97,6 +97,7 @@ export const register = async (req: IReq, res: IRes) => {
       nroDocumento,
       telefono,
       email,
+      rol: Rol.Usuario,
       contrasena: hash,
     }).save();
 

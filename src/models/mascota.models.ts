@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Estado} from "../interfaces/enums";
+import { Estado, Solicitud} from "../interfaces/enums";
 import {  IMascota } from "../interfaces/Mascota";
 
 
@@ -37,8 +37,13 @@ const mascotaSchema = new mongoose.Schema<IMascota>({
       required: true
     },
     caracteristicas: {
-      type: mongoose.Schema.Types.Mixed, // Permite cualquier tipo de valor
+      type: String, // Permite cualquier tipo de valor
       required: true
+    },
+    solicitud: {
+      type: String,
+      enum: Object.values(Solicitud),
+      required:true
     }
   
   })
