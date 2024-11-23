@@ -9,10 +9,9 @@ import { editarSolicitudMascota as solicitud } from '../schema/mascota.schema';
 const admin = Router()
 
 admin.use(authenticateToken);
-admin.use(validateAdmin);
 
 admin.get('/caracteristicas', traerCaracteristicas)
-admin.post('/caracteristicas', validate(caracteristicasMascota), agregarCaracteristica)
-admin.put('/editarSolicitudMascota', validate(solicitud), editarSolicitudMascota);
+admin.post('/caracteristicas', validateAdmin, validate(caracteristicasMascota), agregarCaracteristica)
+admin.put('/editarSolicitudMascota', validateAdmin, validate(solicitud), editarSolicitudMascota);
 
 export default admin;

@@ -10,7 +10,6 @@ RUN npm install
 COPY . .
 
 RUN npm run start
-// etapa 2
 
 FROM node:18
 WORKDIR /app
