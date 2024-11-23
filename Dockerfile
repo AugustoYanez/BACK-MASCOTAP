@@ -11,7 +11,6 @@ COPY . .
 
 RUN npm run start
 
-
 FROM node:18
 WORKDIR /app
 COPY --from=build /app/package*.json ./
