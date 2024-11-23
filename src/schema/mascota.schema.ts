@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { Estado } from '../interfaces/enums'
+import { Estado, Solicitud, tipoDato } from '../interfaces/enums'
 
 export const registerMascota = z.object({
     body: z.object({
@@ -25,7 +25,17 @@ export const registerMascota = z.object({
             required_error: "el campo imagen, es requerido"
         }),
         caracteristicas: z.string({
-            required_error: "el campo caracteristicas, es requerido"
+            required_error: "el campo caracteristica, es requerido"
+        })
+    })
+})
+export const editarSolicitudMascota = z.object({
+    body: z.object({
+        _id: z.string({
+            required_error:"req"
+        }),
+        solicitud: z.nativeEnum(Solicitud, {
+            required_error:"req"
         })
     })
 })

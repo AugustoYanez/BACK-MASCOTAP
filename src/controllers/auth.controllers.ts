@@ -1,3 +1,4 @@
+
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import { Request as IReq, Response as IRes } from 'express';
@@ -6,6 +7,7 @@ import { Usuario } from '../models/auth.models';
 import { createAccesToken } from '../libs/jwt';
 import weakPasswords from '../data/weakPasswords.json'
 
+import { Rol } from "../interfaces/enums";
 const INTENTOS_FALLIDOS_MAX = 10; // Cambiado a 10 intentos
 const TIEMPO_BLOCK = 5 * 60 * 1000; // 5 minutos
 
@@ -55,6 +57,7 @@ export const login = async (req: IReq, res: IRes) => {
       _id: found._id,
       nombre: found.nombre,
       email: found.email,
+      rol: found.rol
     });
 
     res.json({ message: "Sesión iniciada correctamente.", token });
@@ -94,6 +97,7 @@ export const register = async (req: IReq, res: IRes) => {
       nroDocumento,
       telefono,
       email,
+      rol: Rol.Usuario,
       contrasena: hash,
     }).save();
 

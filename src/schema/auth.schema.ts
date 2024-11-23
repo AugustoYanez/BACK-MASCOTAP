@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { Documento, Contacto } from '../interfaces/enums'
+import { Documento, Contacto, Rol } from '../interfaces/enums'
 
 export const loginSchema = z.object({
     body: z.object({
