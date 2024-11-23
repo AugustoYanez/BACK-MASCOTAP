@@ -6,7 +6,7 @@ import { Mascota } from '../models/mascota.models';
 import mongoose from 'mongoose';
 import { Estado, Solicitud } from '../interfaces/enums';
 
-export const traerMascotas = async (req: IReq, res: IRes) => {
+export const traerMascotasUsuaruio = async (req: IReq, res: IRes) => {
     try {
         const {_id} = (req as CustomRequest).payload as Payload;
         const found = await Usuario.findOne({ _id }).populate('mascotas').exec();
@@ -15,6 +15,18 @@ export const traerMascotas = async (req: IReq, res: IRes) => {
             return;
         }
         res.status(200).json(found.mascotas);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+export const traerMascotas = async (req: IReq, res: IRes) => {
+    try {
+        const found = await Mascota.find();
+        if (!found) {
+            res.status(404).json({ error: 'Mascotas no encontrado' });
+            return;
+        }
+        res.status(200).json(found);
     } catch (error) {
         res.status(500).json(error);
     }
