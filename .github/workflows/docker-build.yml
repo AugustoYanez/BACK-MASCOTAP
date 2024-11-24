@@ -7,7 +7,6 @@ on:
       - main
       - QA
       - dev
-
 jobs:
   build:
     runs-on: ubuntu-latest
