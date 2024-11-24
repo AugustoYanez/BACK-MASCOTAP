@@ -38,5 +38,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ghcr.io/augustoyanez/back-mascotap:latest .
-          docker push ghcr.io/augustoyanez/back-mascotap:latest
+          BRANCH=$(echo "${GITHUB_REF_NAME}" | tr '[:upper:]' '[:lower:]')
+          docker build -t ghcr.io/augustoyanez/back-mascotap:$BRANCH .
+          docker push ghcr.io/augustoyanez/back-mascotap:$BRANCH
