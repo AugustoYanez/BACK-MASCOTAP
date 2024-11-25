@@ -23,7 +23,7 @@ jobs:
     - name: Create .env file with GitHub Secrets
       run: |
         touch .env.production
-        echo BASE_DE_DATOS=${{ secrets.BASE_DE_DATOS }} >> .env.production
+        echo DATABASE=${{ secrets.BASE_DE_DATOS }} >> .env.production
         echo TOKEN=${{ secrets.TOKEN }} >> .env.production
         cat .env.production
 
