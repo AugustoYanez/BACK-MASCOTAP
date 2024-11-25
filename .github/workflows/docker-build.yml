@@ -20,7 +20,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-
+      - name: Create .env file with GitHub Secrets
+        run: |
+          touch .env.production
+          echo BASE_DE_DATOS=${{ secrets.BASE_DE_DATOS }} >> .env
+          echo TOKEN=${{ secrets.TOKEN }} >> .env
+          cat .env.production
       - name: Install dependencies
         run: npm install
 
