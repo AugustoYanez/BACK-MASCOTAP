@@ -13,7 +13,7 @@ FROM node:18
 WORKDIR /app
 COPY --from=build /app/package*.json ./
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/.env.production ./dist
+COPY --from=build /app/.env.production ./
 RUN npm install 
 EXPOSE 3000
 
