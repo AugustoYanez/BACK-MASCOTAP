@@ -5,11 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - DATABASE=${DATABASE}
+        - TOKEN_SECRET=${TOKEN}
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - DATABASE=mongodb+srv://mascotapcompany:z0Vv0fnVPJurI8hH@desarrollo.rrp5n.mongodb.net/?retryWrites=true&w=majority&appName=desarrollo
-      - TOKEN_SECRET=secet
     env_file:
       - .env.production
