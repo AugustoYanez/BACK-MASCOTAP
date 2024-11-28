@@ -6,8 +6,8 @@ import { IUsuario } from '../interfaces/Usuario';
 import { Usuario } from '../models/auth.models';
 import { createAccesToken } from '../libs/jwt';
 import weakPasswords from '../data/weakPasswords.json'
-
 import { Rol } from "../interfaces/enums";
+
 const INTENTOS_FALLIDOS_MAX = 10; // Cambiado a 10 intentos
 const TIEMPO_BLOCK = 5 * 60 * 1000; // 5 minutos
 
