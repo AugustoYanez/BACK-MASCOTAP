@@ -19,6 +19,7 @@ export const traerMascotasUsuaruio = async (req: IReq, res: IRes) => {
         res.status(500).json(error);
     }
 }
+
 export const traerMascotas = async (req: IReq, res: IRes) => {
     try {
         const found = await Mascota.find();
@@ -99,10 +100,13 @@ export const agregarMascota = async (req: IReq, res: IRes) => {
 
 export const editarMascota = async (req: IReq, res: IRes) => {
     try {
-        const {_id, placaID, nombre, apodo, estado, edad, descripcion,imagen, caracteristicas }: IMascota = req.body;
+        const {_id, placaID, nombre, apodo, estado, edad, descripcion,imagen, caracteristicas, solicitud }: IMascota = req.body;
         const user = (req as CustomRequest).payload as Payload;  
         const usuario = await Usuario.findById({ _id: user._id }).populate('mascotas');
 
+        /* const solicitud = await Mascota.find({_id}, 'solicitud')
+        console.log(solicitud);
+         */
         const mascota = await Mascota.findOneAndReplace({_id}, {
             placaID,
             nombre,
@@ -111,7 +115,8 @@ export const editarMascota = async (req: IReq, res: IRes) => {
             edad,
             descripcion,
             imagen,
-            caracteristicas
+            caracteristicas,
+            solicitud
         });
 
         if (!usuario) {  
@@ -171,3 +176,9 @@ export const traerMascotasPerdidas = async (req: IReq, res: IRes) => {
         res.status(500).json({ error: 'Error al obtener las mascotas perdidas' });
     }
 };
+
+export const encontrarDueño = async (req: IReq, res: IRes) => {
+    const {  } : IMascota = req.body;
+
+
+}

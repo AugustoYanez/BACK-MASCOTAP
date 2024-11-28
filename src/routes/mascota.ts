@@ -16,5 +16,6 @@ router.post('/mascotas', validate(registerMascota), agregarMascota)
 router.put('/mascotas', validate(registerMascota), editarMascota)
 router.delete('/mascotas/:id', validate(idSchema), eliminarMascota)
 router.get('/mascotas-perdidas', authenticateToken, traerMascotasPerdidas);
+router.get('encontrar-dueño', )
 
 export default router;
