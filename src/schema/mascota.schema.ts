@@ -26,9 +26,6 @@ export const registerMascota = z.object({
         }),
         caracteristicas: z.string({
             required_error: "el campo caracteristica, es requerido"
-        }),
-        solicitud: z.nativeEnum(Solicitud, {
-            required_error:"req"
         })
     })
 })

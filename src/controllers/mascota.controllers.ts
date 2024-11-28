@@ -33,6 +33,27 @@ export const traerMascotas = async (req: IReq, res: IRes) => {
     }
 }
 
+export const traerMascotasPagina = async (req: IReq, res: IRes) => {
+
+    const page: number = parseInt(req.query.page as string) || 1; 
+    const limit: number = parseInt(req.query.limit as string) || 10; 
+
+    const startIndex = (page - 1) * limit;
+
+    const mascotas = await Mascota.find() 
+      .skip(startIndex) 
+      .limit(limit); 
+
+    const totalMascotas = await Mascota.countDocuments();
+
+    res.status(200).json({
+      total: totalMascotas, 
+      page, 
+      limit, 
+      mascotas,
+    });
+}
+
 export const traerMascota = async (req: IReq, res: IRes) => {
     try {
         const {id} = req.params;
