@@ -21,6 +21,17 @@ export const perfil = async (req: IReq, res: IRes) => {
     }
 }
 
+export const getPerfil = async (req: IReq, res: IRes) => {
+    try {
+        const {id} = req.params;
+        const found = await Usuario.findById(id).populate('mascotas').exec();
+        if (!found) {
+          res.status(200).json(found);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al obtener el perfil' });
+    }
+}
 export const editarUsuario = async (req: IReq, res: IRes) => {
     try {
         const { email } = (req as CustomRequest).payload as Payload; // Obtenemos el email del token
@@ -55,6 +66,7 @@ export const eliminarUsuario = async (req: IReq, res: IRes) => {
             return;
         }
 
+        
         res.status(200).json({ message: 'Usuario eliminado con éxito' });
     } catch (error) {
         console.error(error);
