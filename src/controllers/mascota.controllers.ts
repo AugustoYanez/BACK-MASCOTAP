@@ -199,7 +199,15 @@ export const traerMascotasPerdidas = async (req: IReq, res: IRes) => {
 };
 
 export const encontrarDueño = async (req: IReq, res: IRes) => {
-    const {  } : IMascota = req.body;
+    const { id } = req.params;
+    const found = await Usuario.findOne({ mascotas: id }).populate('mascotas');
+
+    if (!found) {
+        res.status(404).json({ error: 'Dueño no encontrado' });
+        return;
+    }
+
+    res.status(200).json(found._id);
 
 
 }
